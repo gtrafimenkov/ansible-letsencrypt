@@ -84,6 +84,7 @@
       uir: False
       hsts: False
       authenticator: '{{ letsencrypt_authenticator }}'
+    when: "{{ letsencrypt_cert_domains|length > 0 }}"
 
   - name: Fix the webroot map in the renewal file
     ini_file:
