@@ -59,7 +59,7 @@
     become: yes
     args:
       creates: "/etc/letsencrypt/live/{{ item }}"
-    with_items: letsencrypt_cert_domains
+    with_items: "{{ letsencrypt_cert_domains }}"
     when: letsencrypt_authenticator == "webroot"
     ignore_errors: True
 
@@ -68,7 +68,7 @@
     become: yes
     args:
       creates: "/etc/letsencrypt/live/{{ item }}"
-    with_items: letsencrypt_cert_domains
+    with_items: "{{ letsencrypt_cert_domains }}"
 
   - name: Fix the renewal file
     ini_file:
